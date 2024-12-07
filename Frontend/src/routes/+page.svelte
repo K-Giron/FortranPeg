@@ -1,5 +1,5 @@
 <script lang="ts">
-    import parseInput from "$lib";
+    import parseInput from "$lib/parser";
     import CodeMirror from "svelte-codemirror-editor"
 
     let editorText = $state("");
