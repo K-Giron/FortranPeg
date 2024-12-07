@@ -2,9 +2,14 @@ Gramatica = Regla (nl Regla)*
 
 Regla = Identificador nl "=" _ Escoger nl ";" 
 
-Escoger = Camino (nl "/" nl Camino)*
+Escoger = Medio (nl "/" nl Medio)*
 
-Camino = Expresion (_ Expresion)*
+Medio =  "(" _ Camino _ ")"
+
+Camino = Expresiones (_ Expresiones)*
+
+Expresiones = Expresion [?+*]?
+
 
 Expresion = Cadenas
           / Identificador
@@ -53,35 +58,3 @@ Identificador = [_a-z]i[_a-z0-9]i*
 _ "espacios en blanco" = [ \t]*
 
 nl "nueva linea" = [ \t\n\r]*
-/* grammar
-  = expressions
-
-expressions
-  = "(" _ expression _  ")"  
-  / expression nl expressions+ nl
-
-expression
-  = parsingExpression [?+*]?
-
-parsingExpression
-  = name
-  / string
-  / range
-
-string
-	= ["] [^"]* ["]
-    / ['] [^']* [']
-    
-range = "[" input_range+ "]"
-
-input_range = [^[\]-] "-" [^[\]-]
-			/ [^[\]]+
-
-name "identificador"
-  = [_a-z]i[_a-z0-9]i*
-
-_ "espacios en blanco"
-  = [ \t]*
-
-nl "nueva linea"
-  = [ \t\n\r]* */
