@@ -2,18 +2,16 @@ Gramatica = Regla (nl Regla)*
 
 Regla = Identificador nl "=" _ Escoger nl ";" 
 
-Escoger = Medio (nl "/" nl Medio)*
-
-Medio =  "(" _ Camino _ ")"
+Escoger = Camino (nl "/" nl Camino)*
 
 Camino = Expresiones (_ Expresiones)*
 
 Expresiones = Expresion [?+*]?
 
-
 Expresion = Cadenas
           / Identificador
           / ExpRegular
+          / "("Escoger")"
 
 Cadenas = '"' [^"]* '"'
 / "'" [^']* "'"
