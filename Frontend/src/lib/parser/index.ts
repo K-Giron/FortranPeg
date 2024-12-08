@@ -6,7 +6,7 @@ export default function parseInput(input: string){
     } catch (e) {
         return e as string
     }
-    return "It's all good!"
+    return "La gramática es correcta"
 }
 
 //agregando un comentario
