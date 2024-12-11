@@ -1,12 +1,13 @@
 Gramatica = Regla (nl Regla)*
 
-Regla = Identificador nl "=" _ Escoger nl ";" 
+Regla = Identificador [_ etiqueta_regla]? nl "=" _ Escoger nl ";" 
 
 Escoger = Camino (nl "/" nl Camino)*
 
 Camino = Expresiones (_ Expresiones)*
 
-Expresiones = Expresion [?+*]?
+Expresiones = [$@]? Expresion [?+*]? 
+            / [@]? etiqueta ":" Expresion
 
 Expresion = Cadenas
           / Identificador
@@ -52,6 +53,10 @@ caracter_unico
 
 
 Identificador = [_a-z]i[_a-z0-9]i*
+
+etiqueta_regla = '"' etiqueta '"'
+
+etiqueta = [a-z]i[a-z0-9]i*
 
 _ "espacios en blanco" = [ \t]*
 
