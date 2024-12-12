@@ -35,12 +35,12 @@ ExpRegular = rango
 /conjunto
 
 conjunto
-  = "[" caracteres:([a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s!"#$%&'()*+,-./:;<=>?@[\\^_`{|}~]+) "]" {
+  = "["_ caracteres:([_a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s!"#$%&'()*+,-./:;<=>?@[\\^_`{|}~]+) _"]" {
       return { tipo: "conjunto", caracteres };
     }
 
 rango
-  = "[" desde:caracter "-" hasta:caracter "]" {
+  = "["_ desde:caracter "-" hasta:caracter _"]" {
       if (desde.charCodeAt(0) > hasta.charCodeAt(0)) {
         throw new Error("El rango es inválido: el carácter de inicio no puede ser mayor que el de fin.");
       }
