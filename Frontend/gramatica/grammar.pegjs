@@ -1,6 +1,6 @@
 Gramatica = Regla (nl Regla)*
 
-Regla = Identificador [_ etiqueta_regla]? nl "=" _ Escoger FinCadena
+Regla = nl Identificador nl Cadenas? nl "=" _ Escoger FinCadena
       / Comentario (nl Comentario)*
 
 FinCadena = ";"
@@ -8,10 +8,15 @@ FinCadena = ";"
 
 Escoger = Camino (nl "/" nl Camino)*
 
-Camino = Expresiones (_ Expresiones)*
+Camino = pluck (_ pluck)*
 
-Expresiones = [$@]? Expresion [?+*]? 
-            / [@]? etiqueta ":" Expresion
+pluck = "@"? _ etiqueta
+
+etiqueta = (Identificador _ ":")? _ Expresion
+
+Expresiones ="$"? _ Expresion _ Cuantificador? 
+
+Cuantificador = [?+*]
 
 Expresion = Cadenas [i]?
           / Identificador
@@ -64,9 +69,6 @@ caracter_unico
 
 Identificador = [_a-z]i[_a-z0-9]i*
 
-etiqueta_regla = '"' etiqueta '"'
-
-etiqueta = [a-z]i[a-z0-9]i*
 
 _ "espacios en blanco" = [ \t]*
 
