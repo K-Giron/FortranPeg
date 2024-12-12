@@ -13,10 +13,11 @@ Camino = Expresiones (_ Expresiones)*
 Expresiones = [$@]? Expresion [?+*]? 
             / [@]? etiqueta ":" Expresion
 
-Expresion = Cadenas
+Expresion = Cadenas [i]?
           / Identificador
-          / ExpRegular
+          / ExpRegular [i]?
           / "("Escoger")"
+          / "."
 
 Cadenas = '"' [^"]* '"'
 / "'" [^']* "'"
