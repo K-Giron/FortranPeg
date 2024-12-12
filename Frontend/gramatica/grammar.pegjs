@@ -1,6 +1,10 @@
 Gramatica = Regla (nl Regla)*
 
-Regla = Identificador [_ etiqueta_regla]? nl "=" _ Escoger nl ";" 
+Regla = Identificador [_ etiqueta_regla]? nl "=" _ Escoger FinCadena
+      / Comentario (nl Comentario)*
+
+FinCadena = ";"
+          / nl
 
 Escoger = Camino (nl "/" nl Camino)*
 
@@ -38,6 +42,11 @@ caracter
   / digito
   / simbolo
   / caracter_unico
+
+ComentarioSimple = "//" (!"\n" .)* {return {tipo: "ComentarioSimple"};}
+ComentarioMultiLinea = "/*" (!"*/" .)* "*/" {return {tipo: "ComentarioMultiLinea"};}
+Comentario = ComentarioSimple 
+           / ComentarioMultiLinea
 
 letra
   = [a-zA-ZáéíóúÁÉÍÓÚñÑ]
