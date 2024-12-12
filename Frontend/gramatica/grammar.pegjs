@@ -14,9 +14,13 @@ pluck = "@"? _ etiqueta
 
 etiqueta = (Identificador _ ":")? _ Expresiones
 
-Expresiones ="$"? _ Expresion _ Cuantificador? 
+Expresiones =[$&!]? _ Expresion _ Cuantificador?
 
 Cuantificador = [?+*]
+  / "|" _ ( Identificador / digito* ) _ "|"
+  / "|" _ ( Identificador / digito* )? _ ".." _ (digito* / Identificador)? _ "|"
+  / "|" _ ( Identificador / digito*)? _ "," _ Escoger _ "|"
+  / "|" _ ( Identificador / digito*)? _ ".." _ (digito* / Identificador)? _ "," _ Escoger _ "|"
 
 Expresion = Cadenas [i]?
           / Identificador
