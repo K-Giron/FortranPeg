@@ -17,10 +17,10 @@ etiqueta = (Identificador _ ":")? _ Expresiones
 Expresiones =[$&!]? _ Expresion _ Cuantificador?
 
 Cuantificador = [?+*]
-  / "|" _ ( Identificador / digito* ) _ "|"
-  / "|" _ ( Identificador / digito* )? _ ".." _ (digito* / Identificador)? _ "|"
-  / "|" _ ( Identificador / digito*)? _ "," _ Escoger _ "|"
-  / "|" _ ( Identificador / digito*)? _ ".." _ (digito* / Identificador)? _ "," _ Escoger _ "|"
+  / "|" _ ( numero/Identificador ) _ "|"
+  / "|" _ ( numero/ Identificador )? _ ".." _ (numero / Identificador)? _ "|"
+  / "|" _ ( numero/ Identificador)? _ "," _ Escoger _ "|"
+  / "|" _ ( numero/ Identificador )? _ ".." _ (numero / Identificador)? _ "," _ Escoger _ "|"
 
 Expresion = Cadenas [i]?
           / Identificador
@@ -63,6 +63,9 @@ letra
 
 digito
   = [0-9]
+
+numero
+  = [0-9]+
 
 simbolo
   = [\s!"#$%&'()*+,-./:;<=>?@[\\^_`{|}~]  // Permite espacio, signos de puntuación, y símbolos
