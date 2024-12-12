@@ -12,7 +12,7 @@ Camino = pluck (_ pluck)*
 
 pluck = "@"? _ etiqueta
 
-etiqueta = (Identificador _ ":")? _ Expresion
+etiqueta = (Identificador _ ":")? _ Expresiones
 
 Expresiones ="$"? _ Expresion _ Cuantificador? 
 
